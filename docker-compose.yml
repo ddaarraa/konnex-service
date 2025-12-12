@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: konnex_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: konnex
+      POSTGRES_PASSWORD: konnexpassword
+      POSTGRES_DB: konnexdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - konnex-network
+
+volumes:
+  pgdata:
+
+networks:
+  konnex-network:
